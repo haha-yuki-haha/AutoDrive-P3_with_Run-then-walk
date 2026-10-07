@@ -244,26 +244,29 @@ values from the accompanying study.
 
 <table align="center">
   <tr>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/02d79fb826a052b8.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/09e659f80a135489.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/0a9df86bd4525744.mp4" type="video/mp4"></video></td>
+    <td><a href="assets/videos/02d79fb826a052b8.mp4"><img src="assets/videos/previews/02d79fb826a052b8.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 1"></a></td>
+    <td><a href="assets/videos/09e659f80a135489.mp4"><img src="assets/videos/previews/09e659f80a135489.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 2"></a></td>
+    <td><a href="assets/videos/0a9df86bd4525744.mp4"><img src="assets/videos/previews/0a9df86bd4525744.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 3"></a></td>
   </tr>
   <tr>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/14372e1d773c5a23.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/1481ccca03915ab1.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/20954f49a4e659af.mp4" type="video/mp4"></video></td>
+    <td><a href="assets/videos/14372e1d773c5a23.mp4"><img src="assets/videos/previews/14372e1d773c5a23.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 4"></a></td>
+    <td><a href="assets/videos/1481ccca03915ab1.mp4"><img src="assets/videos/previews/1481ccca03915ab1.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 5"></a></td>
+    <td><a href="assets/videos/20954f49a4e659af.mp4"><img src="assets/videos/previews/20954f49a4e659af.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 6"></a></td>
   </tr>
   <tr>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/3dcc4d0f431158f9.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/4ac4540129a65bb0.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/4aea5cf609f8543f.mp4" type="video/mp4"></video></td>
+    <td><a href="assets/videos/3dcc4d0f431158f9.mp4"><img src="assets/videos/previews/3dcc4d0f431158f9.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 7"></a></td>
+    <td><a href="assets/videos/4ac4540129a65bb0.mp4"><img src="assets/videos/previews/4ac4540129a65bb0.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 8"></a></td>
+    <td><a href="assets/videos/4aea5cf609f8543f.mp4"><img src="assets/videos/previews/4aea5cf609f8543f.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 9"></a></td>
   </tr>
   <tr>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/4c7a22bc1dcc5b23.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/4f4da09be486559a.mp4" type="video/mp4"></video></td>
-    <td><video controls muted loop playsinline width="320"><source src="assets/videos/58c3357487cd50be.mp4" type="video/mp4"></video></td>
+    <td><a href="assets/videos/4c7a22bc1dcc5b23.mp4"><img src="assets/videos/previews/4c7a22bc1dcc5b23.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 10"></a></td>
+    <td><a href="assets/videos/4f4da09be486559a.mp4"><img src="assets/videos/previews/4f4da09be486559a.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 11"></a></td>
+    <td><a href="assets/videos/58c3357487cd50be.mp4"><img src="assets/videos/previews/58c3357487cd50be.gif" width="320" alt="AutoDrive-P3 Run-then-Walk demo 12"></a></td>
   </tr>
 </table>
+
+Each animated preview links to its full-resolution MP4. The complete
+demonstration set is available in [`assets/videos/`](assets/videos/).
 
 ## 📬 Contact
 
