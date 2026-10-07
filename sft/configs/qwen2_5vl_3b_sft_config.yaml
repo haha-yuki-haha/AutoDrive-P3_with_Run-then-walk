@@ -1,0 +1,43 @@
+# Model arguments
+model_name_or_path: Qwen/Qwen2.5-VL-3B-Instruct
+model_revision: main
+torch_dtype: bfloat16
+
+# Data training arguments
+dataset_name: AutoDrive
+dataset_configs:
+- all
+preprocessing_num_workers: 8
+
+# SFT trainer config
+bf16: true
+do_eval: true
+eval_strategy: "no"
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+learning_rate: 2.0e-05
+# learning_rate: 1.0e-05
+log_level: info
+logging_steps: 10
+logging_strategy: steps
+lr_scheduler_type: cosine
+packing: true
+max_seq_length: 65536
+max_steps: -1
+num_train_epochs: 10
+output_dir: ./outputs/sft
+overwrite_output_dir: true
+per_device_eval_batch_size: 2
+per_device_train_batch_size: 1
+push_to_hub: false
+report_to: []
+# save_strategy: "no"
+# eval_strategy: "steps"
+# eval_steps: 400
+save_strategy: "steps"
+save_steps: 12776
+seed: 42
+warmup_ratio: 0.1

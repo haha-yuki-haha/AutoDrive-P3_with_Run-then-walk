@@ -1,0 +1,32 @@
+compute_environment: LOCAL_MACHINE
+debug: false
+
+distributed_type: DEEPSPEED
+deepspeed_config:
+  deepspeed_multinode_launcher: standard
+  offload_optimizer_device: none
+  offload_param_device: none
+  zero3_init_flag: false
+  zero_stage: 2
+
+# distributed_type: FSDP
+# fsdp_config:
+#   sharding_strategy: 1  # FULL_SHARD mode
+#   cpu_offload: true     # Enable CPU offload
+#   auto_wrap_policy: TRANSFORMER_BASED_WRAP
+#   mixed_precision: bf16
+#   backward_prefetch: BACKWARD_PRE
+#   limit_all_gathers: true
+
+# downcast_bf16: 'no'
+machine_rank: 0
+main_training_function: main
+mixed_precision: bf16
+num_machines: 1
+num_processes: 8
+rdzv_backend: static
+same_network: true
+tpu_env: []
+tpu_use_cluster: false
+tpu_use_sudo: false
+use_cpu: false

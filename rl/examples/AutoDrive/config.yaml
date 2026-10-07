@@ -1,0 +1,125 @@
+data:
+  # Override both paths on the command line. Each path is a directory containing
+  # one or more datasets written with Dataset.save_to_disk().
+  train_files: ""
+  val_files: ""
+  prompt_key: problem
+  answer_key: answer
+  image_key: images
+  video_key: videos
+  image_dir: null
+  video_fps: 2.0
+  max_prompt_length: 768
+  max_response_length: 2048
+  # Number of samples collected per experience rollout.
+  # rollout_batch_size: 512  # equivalent to verl's data.train_batch_size
+  rollout_batch_size: 128  # equivalent to verl's data.train_batch_size
+  mini_rollout_batch_size: null  # equivalent to verl's data.gen_batch_size
+  val_batch_size: 128
+  format_prompt: null
+  override_chat_template: null
+  shuffle: true
+  seed: 1
+  min_pixels: 112896
+  max_pixels: 451584
+  filter_overlong_prompts: true
+  question_template: ./examples/AutoDrive/prompt_noCoT.txt
+  video_shape: "[4, 3, 168, 672]"
+
+algorithm:
+  adv_estimator: grpo
+  disable_kl: false
+  use_kl_loss: true
+  kl_penalty: low_var_kl
+  kl_coef: 1.0e-3
+  online_filtering: false  # dapo filter groups
+  filter_key: overall
+  filter_low: 0.01
+  filter_high: 0.99
+
+worker:
+  actor:
+    # Global batch size for each policy update.
+    # global_batch_size: 128  # equivalent to verl's actor.ppo_mini_batch_size
+    global_batch_size: 32  # equivalent to verl's actor.ppo_mini_batch_size
+    # Per-device micro-batch size for policy updates.
+    micro_batch_size_per_device_for_update: 8  # equivalent to verl's actor.ppo_micro_batch_size_per_gpu
+    # Per-device micro-batch size for experience log-probability computation.
+    micro_batch_size_per_device_for_experience: 8  # equivalent to verl's rollout.log_prob_micro_batch_size_per_gpu
+    max_grad_norm: 1.0
+    padding_free: true
+    dynamic_batching: true
+    ulysses_size: 1
+    model:
+      model_path: Qwen/Qwen2.5-VL-3B-Instruct
+      enable_gradient_checkpointing: true
+      trust_remote_code: false
+      freeze_vision_tower: false
+    optim:
+      lr: 1.0e-6
+      weight_decay: 1.0e-2
+      strategy: adamw  # {adamw, adamw_bf16}
+      lr_warmup_ratio: 0.0
+    fsdp:
+      enable_full_shard: true
+      enable_cpu_offload: false
+      enable_rank0_init: true
+    offload:
+      # offload_params: true  # true: more CPU memory; false: more GPU memory
+      # offload_optimizer: true  # true: more CPU memory; false: more GPU memory
+      offload_params: true  # true: more CPU memory; false: more GPU memory
+      offload_optimizer: true  # true: more CPU memory; false: more GPU memory
+
+  rollout:
+    n: 8
+    temperature: 1.0
+    top_p: 1.0
+    limit_images: 0
+    gpu_memory_utilization: 0.85
+    enforce_eager: false
+    enable_chunked_prefill: false
+    tensor_parallel_size: 1
+    disable_tqdm: false
+    val_override_config:
+      temperature: 0.0
+      top_p: 1.0
+      n: 1
+      # temperature: 0.6
+      # top_p: 0.95
+      # n: 1
+
+  ref:
+    fsdp:
+      enable_full_shard: true
+      enable_cpu_offload: true  # true: more CPU memory; false: more GPU memory
+      enable_rank0_init: true
+    offload:
+      offload_params: false
+
+  reward:
+    reward_type: batch
+    reward_function: ./examples/reward_function/autodrive_navsim.py:compute_score
+    # Run is the default; set this to walk for the second stage.
+    reward_function_kwargs:
+      stage: run
+
+trainer:
+  total_epochs: 15
+  max_steps: null
+  project_name: autodrive_grpo
+  experiment_name: navsim_rl
+  logger: ["console", "swanlab"]
+  nnodes: 1
+  n_gpus_per_node: 8
+  max_try_make_batch: 20  # -1 means no limit
+  val_freq: 200  # -1 to disable
+  val_before_train: false
+  val_only: false
+  val_generations_to_log: 5
+  save_freq: 200  # -1 to disable
+  save_limit: 12  # -1 to disable
+  save_model_only: false
+  save_checkpoint_path: null
+  load_checkpoint_path: null
+  # Disable automatic resume unless a stage-specific checkpoint is intended.
+  find_last_checkpoint: false
